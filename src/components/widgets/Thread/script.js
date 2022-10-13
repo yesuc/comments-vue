@@ -39,7 +39,7 @@ export default {
             userAccounts: 'USER_ACCOUNTS'
         }),
         paddingLeftStyle() {
-            return `padding-left: ${this.paddingLeft * 2}vw`
+            return `padding-left: ${this.paddingLeft}vw`
         },
         headCommentAccount() {
             if (!this.headComment) return undefined;
