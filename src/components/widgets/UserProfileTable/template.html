@@ -1,0 +1,18 @@
+
+<v-data-table :headers="headers" :items="userList" no-data-text="No users currently available...change that by joining our forum!">
+    <template v-slot:item.name="{ item }">
+        <div class="pa-sm-2">
+            <v-avatar v-if="$vuetify.breakpoint.xs" class="mt-2">
+                <img :src="item.avatar" />
+            </v-avatar>
+            <v-avatar v-else>
+                <img :src="item.avatar" />
+            </v-avatar>
+            <div v-if="$vuetify.breakpoint.xs" class="text-body-1 mt-2"> {{ 'u/' + item.name }} </div>
+            <span v-else class="text-body-1 ml-sm-2"> {{ 'u/' + item.name }} </span>
+        </div>
+    </template>
+    <template v-slot:item.email="{ item }">
+        <div class="text-start text-body-1">{{ item.email }}</div>
+    </template>
+</v-data-table>

@@ -1,0 +1,35 @@
+<v-container>
+    <v-row v-if="headComment" align="center">
+        <v-col v-if="childCommentList.length" cols="auto">
+            <v-btn @click="childrenHidden = !childrenHidden" small>
+                <v-icon v-if="childrenHidden" small>mdi-arrow-collapse-down</v-icon>
+                <v-icon v-else small>mdi-arrow-collapse-up</v-icon>
+            </v-btn>
+        </v-col>
+        <v-col cols="auto">
+            <v-avatar>
+                <img :src="headCommentAccount.avatar" />
+            </v-avatar>
+            <span class="text-start text-body-2 pl-2 d-inline-block">
+                {{ 'u/' + headCommentAccount.name }}
+            </span>
+        </v-col>
+    </v-row>
+    <v-row v-if="headComment">
+        <v-col cols="12">
+            <div class="text-start text-body-1">
+                {{ headComment.message }}
+            </div>
+        </v-col>
+        <v-col class="pa-1"><v-divider /></v-col>
+    </v-row>
+    <v-row v-for="(thread, i) in childCommentList" :keys="i" :style="paddingLeftStyle" v-show="!childrenHidden">
+        <v-col>
+            <Thread 
+                :headComment="thread.commentObj"
+                :childCommentList="thread.children"
+                :paddingLeft="paddingLeft + 1"
+            />
+        </v-col>
+    </v-row>
+</v-container>

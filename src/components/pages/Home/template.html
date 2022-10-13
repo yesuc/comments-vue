@@ -1,0 +1,26 @@
+<v-container class="py-5">
+    <v-row>
+        <v-col>
+            <h1 class="text-md-h1 text-sm-h2 text-center">r/KyotoCooling</h1>
+        </v-col>
+    </v-row>
+    <v-row fill-height>
+        <v-col>
+            <v-tabs v-model="tab" fixed-tabs>
+                <v-tab>
+                    User Profiles
+                </v-tab>
+                <v-tab-item>
+                    <UserProfileTable :userList="getUserAccounts" />
+                </v-tab-item>
+
+                <v-tab>
+                    Comments
+                </v-tab>
+                <v-tab-item>
+                    <Threads :childCommentList="getThreadComments"/>
+                </v-tab-item>
+            </v-tabs>
+        </v-col>
+    </v-row>
+</v-container>
